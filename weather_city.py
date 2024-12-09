@@ -62,7 +62,7 @@ def get_summary_weather(json_weather):
     }
 
 def check_bad_weather(temperature, wind_speed, rain_probability):
-    if temperature < 2 or temperature > 35:
+    if temperature < 2 or temperature > 30:
         return "Плохие погодные условия: температура вне норм"
     if wind_speed > 49:
         return "Плохие погодные условия: сильный ветер"
@@ -70,3 +70,13 @@ def check_bad_weather(temperature, wind_speed, rain_probability):
         return "Плохие погодные условия: высокая вероятность осадков"
     return "Хорошие погодные условия."
 
+#Тестирование
+
+lat_lon = "54.2164817, -4.5390064"
+weather = get_weather(get_local_key(lat_lon))
+sum_weather = get_summary_weather(weather)
+print(sum_weather)
+temp = sum_weather['temperature']
+wind = sum_weather['wind']
+rain_prob = sum_weather['rain_probability']
+print(check_bad_weather(temp, wind, rain_prob))
